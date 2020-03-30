@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import Card from './Card'
 import axios from "axios";
-let olenSayisi = 0;
-let iyilesenSayisi = 0;
-let hastaSayisi = 0;
 export default class App extends Component {
   state = {
     data: [],
@@ -18,44 +15,45 @@ export default class App extends Component {
     let date = new Date();
     axios
       .get("https://cors-anywhere.herokuapp.com/https://corona.cbddo.gov.tr/Home/GetTotalData2?_=" + date.getTime())
-      .then(data => this.setState({ data: data.data.data }))
-      .then(() => {
-        this.state.data.forEach(element => {
-          let item = element.countryStats;
-          this.setState({olenSayisi, olenSayisi})
-          this.setState({hastaSayisi, hastaSayisi})
-          this.setState({iyilesenSayisi, iyilesenSayisi})
-          olenSayisi += parseInt(item.deathCount);
-          hastaSayisi += parseInt(item.confirmedCount);
-          iyilesenSayisi += parseInt(item.recovryCount);
-        });
-      })
+      .then(data => this.setVirusData(data))
       .catch(err => {
         console.log(err);
         return null;
       });
   };
+  setVirusData(data) {
+    let olenSayisi = 0;
+    let iyilesenSayisi = 0;
+    let hastaSayisi = 0;
+    this.setState({ data: data.data.data })
+    let item = data.data.data;
+    console.clear()
+    item.forEach(element => {
+      olenSayisi += element.countryStats.deathCount
+      iyilesenSayisi += element.countryStats.recovryCount
+      hastaSayisi += element.countryStats.confirmedCount
+    });
+    this.setState({ olenSayisi: olenSayisi })
+    this.setState({ iyilesenSayisi: iyilesenSayisi })
+    this.setState({ hastaSayisi: hastaSayisi })
+  }
+
+
   render() {
     return (
       <div className="container-fluid">
-        
-
 
         {this.state.data.length != 0 ? (
           <Card
           ulkeAdi="Dunya"
-          hastaSayisi={hastaSayisi}
-          iyilesenSayisi={iyilesenSayisi}
-          olenSayisi={olenSayisi}
-          ></Card>
-          
-          
-          ) : (
-            <>
-            </>
-          )}
-        
-
+          hastaSayisi={this.state.hastaSayisi}
+          iyilesenSayisi={this.state.iyilesenSayisi}
+          olenSayisi={this.state.olenSayisi}
+        />
+        ) : (
+          <>
+          </>
+        )}
         {this.state.data.length === 0 ? (
           <>
             <Card

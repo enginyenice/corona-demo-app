@@ -1,7 +1,6 @@
 import React from 'react'
 const card = (props) => {
     return (
-
         <div className="col col-md-4 col col-12 col-sm-12 mb-3 float-left">
             <div className="card bg-info text-center  text-light">
                 <div className="card-header">

@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import Card from './Card'
 import axios from "axios";
+import Loader from "./Loader"
+
+
+
 export default class App extends Component {
   state = {
     data: [],
@@ -45,53 +49,23 @@ export default class App extends Component {
 
         {this.state.data.length != 0 ? (
           <Card
-          ulkeAdi="Dunya"
-          hastaSayisi={this.state.hastaSayisi}
-          iyilesenSayisi={this.state.iyilesenSayisi}
-          olenSayisi={this.state.olenSayisi}
-        />
+            ulkeAdi="Dunya"
+            hastaSayisi={this.state.hastaSayisi}
+            iyilesenSayisi={this.state.iyilesenSayisi}
+            olenSayisi={this.state.olenSayisi}
+          />
         ) : (
-          <>
-          </>
-        )}
+            <>
+            </>
+          )}
         {this.state.data.length === 0 ? (
           <>
-            <Card
-              ulkeAdi="Yukleniyor"
-              hastaSayisi="Yukleniyor"
-              iyilesenSayisi="Yukleniyor"
-              olenSayisi="Yukleniyor"
-            />
-            <Card
-              ulkeAdi="Yukleniyor"
-              hastaSayisi="Yukleniyor"
-              iyilesenSayisi="Yukleniyor"
-              olenSayisi="Yukleniyor"
-            />
-            <Card
-              ulkeAdi="Yukleniyor"
-              hastaSayisi="Yukleniyor"
-              iyilesenSayisi="Yukleniyor"
-              olenSayisi="Yukleniyor"
-            />
-            <Card
-              ulkeAdi="Yukleniyor"
-              hastaSayisi="Yukleniyor"
-              iyilesenSayisi="Yukleniyor"
-              olenSayisi="Yukleniyor"
-            />
-            <Card
-              ulkeAdi="Yukleniyor"
-              hastaSayisi="Yukleniyor"
-              iyilesenSayisi="Yukleniyor"
-              olenSayisi="Yukleniyor"
-            />
-            <Card
-              ulkeAdi="Yukleniyor"
-              hastaSayisi="Yukleniyor"
-              iyilesenSayisi="Yukleniyor"
-              olenSayisi="Yukleniyor"
-            />
+           <Loader />
+           <Loader />
+           <Loader />
+           <Loader />
+           <Loader />
+           <Loader />
           </>
         ) : (
             this.state.data.map((e, i) => {

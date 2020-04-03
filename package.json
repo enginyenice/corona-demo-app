@@ -1,16 +1,14 @@
 {
-  "name": "corona-demo-app",
-  "version": "0.1.0",
-  "private": true,
+  "name": "covid-demo",
+  "version": "1.0.0",
+  "description": "Covid-Demo",
+  "main": "index.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "author": "Engin Yenice",
+  "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.2",
-    "next": "9.3.2",
-    "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "axios": "^0.19.2"
   }
 }

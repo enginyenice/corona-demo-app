@@ -26,11 +26,9 @@ async function getData() {
     }
 }
 
-searchInput.addEventListener("keydown", search, false);
+searchInput.addEventListener("change", search, false);
 function search(e) {
-
     data = localStorage.getItem("globalData")
-    if (e.keyCode == 13) {
         let searchData = e.target.value;
         let FullData = JSON.parse(data);
         FullData.forEach(element => {
@@ -43,8 +41,6 @@ function search(e) {
         if ((e.target.value).toLowerCase() == "dünya") {
             app.innerHTML = defaultRes()
         }
-
-    }
 }
 
 function defaultRes() {

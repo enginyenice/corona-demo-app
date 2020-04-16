@@ -6,6 +6,7 @@ async function getData() {
     let toplamIyilesen = 0;
     let toplamOlen = 0;
     try {
+        console.log("x");
         let date = new Date();
         const response = await fetch("https://cors-anywhere.herokuapp.com/https://corona.cbddo.gov.tr/Home/GetTotalData2?_=" + date.getTime()).then(res => res);
         const res = await response.json()
@@ -151,6 +152,15 @@ function responseFunc(ulkeBilgileri, sehirBilgileri) {
 }
 
 function loadText() {
+    let loadText = document.getElementById("lastDate");
+    let localDate = localStorage.getItem("time");
+
+    let date = new Date();
+    date.setTime(localDate)
+    
+    console.log(date.getHours() + ":" + date.getMinutes())
+
+
     let text = `
     <input type="text" id="loadText" name="countryName" placeholder="Aramak İstediğiniz Ülkeyi Yaziniz" class="form-control" list="countryName">
     <datalist id="countryName">
